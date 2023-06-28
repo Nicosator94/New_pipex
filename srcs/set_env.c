@@ -1,34 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   set_env.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: niromano <niromano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/13 10:14:50 by niromano          #+#    #+#             */
-/*   Updated: 2023/06/28 14:31:53 by niromano         ###   ########.fr       */
+/*   Created: 2023/06/28 14:33:06 by niromano          #+#    #+#             */
+/*   Updated: 2023/06/28 14:44:48 by niromano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "pipex.h"
 
-# include <fcntl.h>
-# include <stdio.h>
-# include <string.h>
-# include <sys/types.h>
-# include <sys/wait.h>
-
-# include "libft/libft.h"
-
-typedef struct s_cmd
+char	*search_line(char **env)
 {
-	char	**cmd;
-	char	*path;
-}	t_cmd;
+	int		i;
+	char	*line;
 
-char	**init_cmd(char *cmd);
-char	*check_path(char **cmd, char **env);
-char	**set_env(char **env);
+	i = 0;
+	while (env[i] != NULL)
+	{
+		if (ft_strncmp("PATH=", env[i], 5) == 0)
+		{
+			line = env[i];
+			return (&line[5]);
+		}
+		i ++;
+	}
+	return (NULL);
+}
 
-#endif
+char	**set_env(char **env)
+{
+	char	**new_env;
+	char	*path_line;
+
+	path_line = search_line(env);
+	new_env = ft_split(path_line, ':');
+	return (new_env);
+}

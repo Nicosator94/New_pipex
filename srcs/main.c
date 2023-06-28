@@ -6,7 +6,7 @@
 /*   By: niromano <niromano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 13:05:23 by niromano          #+#    #+#             */
-/*   Updated: 2023/06/28 14:08:55 by niromano         ###   ########.fr       */
+/*   Updated: 2023/06/28 15:00:47 by niromano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,25 @@ void	pipex(char **env, t_list *list, int file[2], int tube[2])
 	}
 }
 
+void	pipex_end(char **env, t_list *list, int file[2], int tube[2])
+{
+	pid_t	pid;
+	t_cmd	cmd;
+	
+	pid = fork();
+	if (pid == 0)
+	{
+		cmd = set_cmd(list->content, env);
+		close(file[0]);
+		close(tube[1]);
+		dup2(tube[0], 0);
+		dup2(file[1], 1);
+		close(file[1]);
+		close(tube[0]);
+		execve(cmd.path, cmd.cmd, NULL);
+	}
+}
+
 t_list	*init_struct(int argc, char *argv[])
 {
 	t_list	*new_list;
@@ -55,6 +74,18 @@ t_list	*init_struct(int argc, char *argv[])
 	return (new_list);
 }
 
+void	wait_all(int time)
+{
+	int	n;
+
+	n = 0;
+	while (n < time)
+	{
+		wait(NULL);
+		n ++;
+	}
+}
+
 int	main(int argc, char *argv[], char **env)
 {
 	int		tube[2];
@@ -65,10 +96,13 @@ int	main(int argc, char *argv[], char **env)
 	pipe(tube);
 	file[0] = open(argv[1], O_RDONLY);
 	file[1] = open(argv[argc - 1], O_WRONLY);
-	while (list_of_cmd != NULL)
-	{
-		pipex(env, list_of_cmd, file, tube);
-		list_of_cmd = list_of_cmd->next;
-	}
+	pipex(env, list_of_cmd, file, tube);
+	list_of_cmd = list_of_cmd->next;
+	pipex_end(env, list_of_cmd, file, tube);
+	close(tube[0]);
+	close(tube[1]);
+	close(file[0]);
+	close(file[1]);
+	wait_all(2);
 	return (0);
 }

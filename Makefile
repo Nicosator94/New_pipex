@@ -1,7 +1,10 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -MMD -g3 -I.
 
-SRCS = main.c
+SRCS = main.c \
+	init_cmd.c \
+	check_path.c \
+	set_env.c
 
 SRC = srcs/
 DIR = objs_deps/

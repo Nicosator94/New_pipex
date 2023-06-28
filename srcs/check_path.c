@@ -1,34 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   check_path.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: niromano <niromano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/13 10:14:50 by niromano          #+#    #+#             */
-/*   Updated: 2023/06/28 14:31:53 by niromano         ###   ########.fr       */
+/*   Created: 2023/06/28 14:11:24 by niromano          #+#    #+#             */
+/*   Updated: 2023/06/28 14:47:23 by niromano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "pipex.h"
 
-# include <fcntl.h>
-# include <stdio.h>
-# include <string.h>
-# include <sys/types.h>
-# include <sys/wait.h>
-
-# include "libft/libft.h"
-
-typedef struct s_cmd
+char	*check_path(char **cmd, char **env)
 {
-	char	**cmd;
 	char	*path;
-}	t_cmd;
+	char	*temp;
+	char	**new_env;
+	int		i;
 
-char	**init_cmd(char *cmd);
-char	*check_path(char **cmd, char **env);
-char	**set_env(char **env);
-
-#endif
+	i = 0;
+	new_env = set_env(env);
+	temp = ft_strjoin("/", cmd[0]);
+	while (env[i] != NULL)
+	{
+		path = ft_strjoin(new_env[i], temp);
+		if (access(path, F_OK | X_OK) == 0)
+			return (path);
+		i ++;
+	}
+	return (NULL);
+}
