@@ -6,7 +6,7 @@
 /*   By: niromano <niromano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 13:05:23 by niromano          #+#    #+#             */
-/*   Updated: 2023/06/28 15:00:47 by niromano         ###   ########.fr       */
+/*   Updated: 2023/06/28 15:21:24 by niromano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_cmd	set_cmd(char *cmd, char **env)
 	return (cmd_init);
 }
 
-void	pipex(char **env, t_list *list, int file[2], int tube[2])
+void	pipex_start(char **env, t_list *list, int file[2], int tube[2])
 {
 	pid_t	pid;
 	t_cmd	cmd;
@@ -91,18 +91,26 @@ int	main(int argc, char *argv[], char **env)
 	int		tube[2];
 	int		file[2];
 	t_list	*list_of_cmd;
+	t_list	*temp;
 
 	list_of_cmd = init_struct(argc, argv);
+	temp = list_of_cmd;
 	pipe(tube);
 	file[0] = open(argv[1], O_RDONLY);
-	file[1] = open(argv[argc - 1], O_WRONLY);
-	pipex(env, list_of_cmd, file, tube);
+	file[1] = open(argv[argc - 1], O_WRONLY | O_TRUNC);
+	pipex_start(env, list_of_cmd, file, tube);
 	list_of_cmd = list_of_cmd->next;
+	while (list_of_cmd->next != NULL)
+	{
+		//multi_pipex();
+		list_of_cmd = list_of_cmd->next;
+	}
 	pipex_end(env, list_of_cmd, file, tube);
 	close(tube[0]);
 	close(tube[1]);
 	close(file[0]);
 	close(file[1]);
 	wait_all(2);
+	ft_lstclear(&temp);
 	return (0);
 }
