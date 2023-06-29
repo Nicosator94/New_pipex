@@ -6,7 +6,7 @@
 /*   By: niromano <niromano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 14:33:06 by niromano          #+#    #+#             */
-/*   Updated: 2023/06/28 14:44:48 by niromano         ###   ########.fr       */
+/*   Updated: 2023/06/29 09:06:21 by niromano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,16 @@ char	*search_line(char **env)
 	return (NULL);
 }
 
-char	**set_env(char **env)
+char	**set_env(char **env, t_list *list)
 {
 	char	**new_env;
 	char	*path_line;
 
 	path_line = search_line(env);
+	if (path_line == NULL)
+		return (NULL);
 	new_env = ft_split(path_line, ':');
+	if (new_env == NULL)
+		malloc_error(list);
 	return (new_env);
 }

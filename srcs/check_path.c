@@ -6,13 +6,13 @@
 /*   By: niromano <niromano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 14:11:24 by niromano          #+#    #+#             */
-/*   Updated: 2023/06/28 14:47:23 by niromano         ###   ########.fr       */
+/*   Updated: 2023/06/29 09:33:32 by niromano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-char	*check_path(char **cmd, char **env)
+char	*check_path(char **cmd, char **env, t_list *list)
 {
 	char	*path;
 	char	*temp;
@@ -20,14 +20,21 @@ char	*check_path(char **cmd, char **env)
 	int		i;
 
 	i = 0;
-	new_env = set_env(env);
+	new_env = set_env(env, list);
 	temp = ft_strjoin("/", cmd[0]);
-	while (env[i] != NULL)
+	if (temp == NULL)
+		malloc_error(list);
+	while (new_env[i] != NULL && new_env != NULL)
 	{
 		path = ft_strjoin(new_env[i], temp);
+		if (path == NULL)
+			malloc_error(list);
 		if (access(path, F_OK | X_OK) == 0)
 			return (path);
+		free(path);
 		i ++;
 	}
+	free_mat(new_env);
+	free(temp);
 	return (NULL);
 }

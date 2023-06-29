@@ -6,7 +6,7 @@
 /*   By: niromano <niromano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 10:14:50 by niromano          #+#    #+#             */
-/*   Updated: 2023/06/29 08:08:06 by niromano         ###   ########.fr       */
+/*   Updated: 2023/06/29 09:33:47 by niromano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ typedef struct s_cmd
 	char	*path;
 }	t_cmd;
 
-char	*check_path(char **cmd, char **env);
-char	**set_env(char **env);
-t_cmd	set_cmd(char *cmd, char **env);
+char	*check_path(char **cmd, char **env, t_list *list);
+char	**set_env(char **env, t_list *list);
+t_cmd	set_cmd(char *cmd, char **env, t_list *list);
 t_list	*init_struct(int argc, char *argv[]);
 
 void	pipex_start(char **env, t_list *list, int file[2], int tube[2]);
@@ -40,8 +40,9 @@ void	wait_all(t_list *list);
 
 // Check_error
 
+void	free_mat(char **mat);
 void	malloc_error(t_list *list);
-void	pipe_error(t_list *list);
+void	system_error(t_list *list);
 void	check_file(int	file[2], t_list *list);
 
 #endif
