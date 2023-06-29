@@ -6,7 +6,7 @@
 /*   By: niromano <niromano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 13:05:23 by niromano          #+#    #+#             */
-/*   Updated: 2023/06/29 07:15:38 by niromano         ###   ########.fr       */
+/*   Updated: 2023/06/29 08:02:33 by niromano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,11 @@ int	main(int argc, char *argv[], char **env)
 
 	list_of_cmd = init_struct(argc, argv);
 	temp = list_of_cmd;
-	pipe(tube);
+	if (pipe(tube) == -1)
+		pipe_error(list_of_cmd);
 	file[0] = open(argv[1], O_RDONLY);
-	file[1] = open(argv[argc - 1], O_WRONLY | O_TRUNC);
+	file[1] = open(argv[argc - 1], O_WRONLY | O_TRUNC | O_CREAT, 0644);
+	check_file(file, list_of_cmd);
 	pipex_start(env, list_of_cmd, file, tube);
 	list_of_cmd = list_of_cmd->next;
 	while (list_of_cmd->next != NULL)
@@ -36,7 +38,7 @@ int	main(int argc, char *argv[], char **env)
 	close(tube[1]);
 	close(file[0]);
 	close(file[1]);
-	wait_all(2);
+	wait_all(temp);
 	ft_lstclear(&temp);
 	return (0);
 }

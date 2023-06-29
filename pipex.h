@@ -6,7 +6,7 @@
 /*   By: niromano <niromano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 10:14:50 by niromano          #+#    #+#             */
-/*   Updated: 2023/06/29 07:15:58 by niromano         ###   ########.fr       */
+/*   Updated: 2023/06/29 07:56:26 by niromano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,12 @@ t_list	*init_struct(int argc, char *argv[]);
 void	pipex_start(char **env, t_list *list, int file[2], int tube[2]);
 void	pipex_end(char **env, t_list *list, int file[2], int tube[2]);
 
-void	wait_all(int time);
+void	wait_all(t_list *list);
+
+// Check_error
+
+void	malloc_error(t_list *list);
+void	pipe_error(t_list *list);
+void	check_file(int	file[2], t_list *list);
 
 #endif

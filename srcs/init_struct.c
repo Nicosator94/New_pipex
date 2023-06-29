@@ -6,18 +6,11 @@
 /*   By: niromano <niromano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 07:14:58 by niromano          #+#    #+#             */
-/*   Updated: 2023/06/29 07:35:09 by niromano         ###   ########.fr       */
+/*   Updated: 2023/06/29 07:47:41 by niromano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-
-void	malloc_error(t_list *list)
-{
-	ft_lstclear(&list);
-	ft_putstr_fd("Allocated memory failed\n", 2);
-	exit(EXIT_FAILURE);
-}
 
 t_list	*init_struct(int argc, char *argv[])
 {
