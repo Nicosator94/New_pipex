@@ -6,7 +6,7 @@
 /*   By: niromano <niromano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 13:05:23 by niromano          #+#    #+#             */
-/*   Updated: 2023/06/29 08:02:33 by niromano         ###   ########.fr       */
+/*   Updated: 2023/06/29 08:08:18 by niromano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,7 @@ int	main(int argc, char *argv[], char **env)
 	check_file(file, list_of_cmd);
 	pipex_start(env, list_of_cmd, file, tube);
 	list_of_cmd = list_of_cmd->next;
-	while (list_of_cmd->next != NULL)
-	{
-		//multi_pipex();
-		list_of_cmd = list_of_cmd->next;
-	}
+	list_of_cmd = multi_pipex(list_of_cmd);
 	pipex_end(env, list_of_cmd, file, tube);
 	close(tube[0]);
 	close(tube[1]);

@@ -7,6 +7,7 @@ SRCS = main.c \
 	check_path.c \
 	set_env.c \
 	pipex.c \
+	multi_pipex.c \
 	wait_all.c \
 	error.c
 
