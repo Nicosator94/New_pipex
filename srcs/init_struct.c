@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_cmd.c                                         :+:      :+:    :+:   */
+/*   init_struct.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: niromano <niromano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/28 14:11:35 by niromano          #+#    #+#             */
-/*   Updated: 2023/06/29 07:14:31 by niromano         ###   ########.fr       */
+/*   Created: 2023/06/29 07:14:58 by niromano          #+#    #+#             */
+/*   Updated: 2023/06/29 07:15:06 by niromano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-char	**init_cmd(char *cmd)
+t_list	*init_struct(int argc, char *argv[])
 {
-	char	**new;
+	t_list	*new_list;
+	int		i;
 
-	new = ft_split(cmd, ' ');
-	return (new);
-}
-
-t_cmd	set_cmd(char *cmd, char **env)
-{
-	t_cmd	cmd_init;
-	
-	cmd_init.cmd = init_cmd(cmd);
-	cmd_init.path = check_path(cmd_init.cmd, env);
-	return (cmd_init);
+	new_list = ft_lstnew(argv[2]);
+	i = 3;
+	while (i < argc - 1)
+	{
+		ft_lstadd_back(&new_list, ft_lstnew(argv[i]));
+		i ++;
+	}
+	return (new_list);
 }
