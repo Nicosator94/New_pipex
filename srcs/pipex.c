@@ -6,7 +6,7 @@
 /*   By: niromano <niromano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 07:12:32 by niromano          #+#    #+#             */
-/*   Updated: 2023/06/29 10:26:17 by niromano         ###   ########.fr       */
+/*   Updated: 2023/06/29 10:36:16 by niromano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	file_error(int tube[2], t_list *list)
 	system_error(list);
 }
 
-void	pipex_start(char **env, t_list *list, char *file[3], int tube[2])
+void	pipex_start(char **env, t_list *list, char *file[2], int tube[2])
 {
 	pid_t	pid;
 	t_cmd	cmd;
@@ -43,7 +43,7 @@ void	pipex_start(char **env, t_list *list, char *file[3], int tube[2])
 	}
 }
 
-void	pipex_end(char **env, t_list *list, char *file[3], int tube[2])
+void	pipex_end(char **env, t_list *list, char *file[2], int tube[2])
 {
 	pid_t	pid;
 	t_cmd	cmd;
