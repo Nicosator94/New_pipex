@@ -6,7 +6,7 @@
 /*   By: niromano <niromano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 13:05:23 by niromano          #+#    #+#             */
-/*   Updated: 2023/06/29 10:36:02 by niromano         ###   ########.fr       */
+/*   Updated: 2023/06/30 07:17:27 by niromano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int argc, char *argv[], char **env)
 	file[0] = argv[1];
 	file[1] = argv[argc - 1];
 	pipex_start(env, list_of_cmd, file, tube);
-//	multi_pipex(list_of_cmd);
+	multi_pipex(list_of_cmd);
 	pipex_end(env, list_of_cmd, file, tube);
 	close(tube[0]);
 	close(tube[1]);
