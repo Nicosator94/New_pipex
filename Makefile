@@ -22,6 +22,17 @@ DEPS = $(addprefix $(DIR), $(DEP))
 OBJ = $(SRCS:.c=.o)
 DEP = $(SRCS:.c=.d)
 
+SRCS_BNS = main_bonus.c \
+	init_struct_bonus.c \
+	init_cmd_bonus.c \
+	check_path_bonus.c \
+	path_already_given_bonus.c \
+	set_env_bonus.c \
+	pipex_bonus.c \
+	multi_pipex_bonus.c \
+	wait_all_bonus.c \
+	error_bonus.c
+
 NAME = pipex
 
 all : $(NAME)
