@@ -6,7 +6,7 @@
 /*   By: niromano <niromano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 14:11:35 by niromano          #+#    #+#             */
-/*   Updated: 2023/06/29 09:33:28 by niromano         ###   ########.fr       */
+/*   Updated: 2023/06/30 07:34:19 by niromano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 t_cmd	set_cmd(char *cmd, char **env, t_list *list)
 {
 	t_cmd	cmd_init;
-	
+
 	cmd_init.cmd = ft_split(cmd, ' ');
 	if (cmd_init.cmd == NULL)
 		malloc_error(list);
