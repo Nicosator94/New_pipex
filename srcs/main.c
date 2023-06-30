@@ -6,7 +6,7 @@
 /*   By: niromano <niromano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 13:05:23 by niromano          #+#    #+#             */
-/*   Updated: 2023/06/30 10:10:00 by niromano         ###   ########.fr       */
+/*   Updated: 2023/06/30 10:29:39 by niromano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int argc, char *argv[], char **env)
 	outfile = open(argv[argc - 1], O_WRONLY | O_TRUNC | O_CREAT, 0644);
 	check_file(infile, outfile, list);
 	temp_tube = pipex_start(env, list, infile);
-//	multi_pipex(list);
+	temp_tube = multi_pipex(env, list, temp_tube);
 	pipex_end(env, list, outfile, temp_tube);
 	wait_all(list);
 	ft_lstclear(&list);
