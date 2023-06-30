@@ -6,26 +6,24 @@
 /*   By: niromano <niromano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 14:11:35 by niromano          #+#    #+#             */
-/*   Updated: 2023/06/30 07:56:02 by niromano         ###   ########.fr       */
+/*   Updated: 2023/06/30 10:10:28 by niromano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-// t_cmd	path_already_given(char *cmd, char **env, t_list *list)
-// {
-// 	t_cmd	cmd_init;
-
-// 	cmd_init.cmd
-// 	return (cmd_init);
-// }
-
 t_cmd	set_cmd(char *cmd, char **env, t_list *list)
 {
 	t_cmd	cmd_init;
 
-//	if (cmd[0] == '/')
-//		return (path_already_given(cmd, env, list));
+	if (cmd[0] == '\0')
+	{
+		ft_putstr_fd("Command not found\n", 2);
+		ft_lstclear(&list);
+		exit(EXIT_FAILURE);
+	}
+	if (cmd[0] == '/' || cmd[0] == '.')
+		return (path_already_given(cmd, list));
 	cmd_init.cmd = ft_split(cmd, ' ');
 	if (cmd_init.cmd == NULL)
 		malloc_error(list);

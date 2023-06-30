@@ -5,6 +5,7 @@ SRCS = main.c \
 	init_struct.c \
 	init_cmd.c \
 	check_path.c \
+	path_already_given.c \
 	set_env.c \
 	pipex.c \
 	multi_pipex.c \
