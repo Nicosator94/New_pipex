@@ -6,7 +6,7 @@
 /*   By: niromano <niromano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 07:46:34 by niromano          #+#    #+#             */
-/*   Updated: 2023/06/29 10:14:19 by niromano         ###   ########.fr       */
+/*   Updated: 2023/06/30 08:06:45 by niromano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,28 @@ void	system_error(t_list *list)
 	perror("Error ");
 	ft_lstclear(&list);
 	exit(EXIT_FAILURE);
+}
+
+void	check_file(int infile, int outfile, t_list *list)
+{
+	if (infile == -1 && outfile == -1)
+	{
+		perror("Error both files ");
+		ft_lstclear(&list);
+		exit(EXIT_FAILURE);
+	}
+	else if (infile == -1)
+	{
+		perror("Error infile ");
+		close(outfile);
+		ft_lstclear(&list);
+		exit(EXIT_FAILURE);
+	}
+	else if (outfile == -1)
+	{
+		perror("Error outfile ");
+		close(infile);
+		ft_lstclear(&list);
+		exit(EXIT_FAILURE);
+	}
 }

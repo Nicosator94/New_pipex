@@ -6,24 +6,11 @@
 /*   By: niromano <niromano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 07:12:32 by niromano          #+#    #+#             */
-/*   Updated: 2023/06/30 08:00:32 by niromano         ###   ########.fr       */
+/*   Updated: 2023/06/30 08:02:16 by niromano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-
-void	file_fd_error(int fd, t_list *list)
-{
-	close(fd);
-	system_error(list);
-}
-
-void	file_tube_error(int tube[2], t_list *list)
-{
-	close(tube[0]);
-	close(tube[1]);
-	system_error(list);
-}
 
 int	pipex_start(char **env, t_list *list, int fd)
 {

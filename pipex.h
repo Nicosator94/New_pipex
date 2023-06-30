@@ -6,7 +6,7 @@
 /*   By: niromano <niromano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 10:14:50 by niromano          #+#    #+#             */
-/*   Updated: 2023/06/30 08:00:44 by niromano         ###   ########.fr       */
+/*   Updated: 2023/06/30 08:06:53 by niromano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,6 @@ void	wait_all(t_list *list);
 void	free_mat(char **mat);
 void	malloc_error(t_list *list);
 void	system_error(t_list *list);
+void	check_file(int infile, int outfile, t_list *list);
 
 #endif
