@@ -6,7 +6,7 @@
 /*   By: niromano <niromano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 10:14:50 by niromano          #+#    #+#             */
-/*   Updated: 2023/07/03 12:19:11 by niromano         ###   ########.fr       */
+/*   Updated: 2023/07/03 14:09:00 by niromano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ t_cmd	path_already_given(char *cmd, t_list *list);
 t_list	*init_struct(int argc, char *argv[]);
 
 int		pipex_start(char **env, t_list *list, int fd);
-int		multi_pipex(char **env, t_list *list, int fd);
 void	pipex_end(char **env, t_list *list, int outfile, int fd);
 
 void	wait_all(t_list *list);
@@ -45,5 +44,6 @@ void	free_mat(char **mat);
 void	malloc_error(t_list *list);
 void	system_error(t_list *list);
 void	check_file(int infile, int outfile, t_list *list);
+void	exec_error(char **cmd, char *path, t_list *list);
 
 #endif

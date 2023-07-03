@@ -6,7 +6,7 @@
 /*   By: niromano <niromano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 07:46:34 by niromano          #+#    #+#             */
-/*   Updated: 2023/07/03 12:17:45 by niromano         ###   ########.fr       */
+/*   Updated: 2023/07/03 14:10:10 by niromano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,13 @@ void	check_file(int infile, int outfile, t_list *list)
 		ft_lstclear(&list);
 		exit(EXIT_FAILURE);
 	}
+}
+
+void	exec_error(char **cmd, char *path, t_list *list)
+{
+	ft_putstr_fd("Command not found\n", 2);
+	free_mat(cmd);
+	free(path);
+	ft_lstclear(&list);
+	exit(EXIT_FAILURE);
 }

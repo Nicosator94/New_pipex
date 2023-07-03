@@ -6,7 +6,7 @@
 /*   By: niromano <niromano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 07:12:32 by niromano          #+#    #+#             */
-/*   Updated: 2023/07/03 12:05:14 by niromano         ###   ########.fr       */
+/*   Updated: 2023/07/03 14:05:15 by niromano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ int	pipex_start(char **env, t_list *list, int fd)
 		dup2(tube[1], 1);
 		close(fd);
 		close(tube[1]);
-		execve(cmd.path, cmd.cmd, NULL);
+		if (execve(cmd.path, cmd.cmd, NULL) == -1)
+			exec_error(cmd.cmd, cmd.path, list);
 	}
 	close(fd);
 	close(tube[1]);
@@ -57,7 +58,8 @@ void	pipex_end(char **env, t_list *list, int outfile, int fd)
 		dup2(outfile, 1);
 		close(fd);
 		close(outfile);
-		execve(cmd.path, cmd.cmd, NULL);
+		if (execve(cmd.path, cmd.cmd, NULL) == -1)
+			exec_error(cmd.cmd, cmd.path, list);
 	}
 	close(outfile);
 	close(fd);

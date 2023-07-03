@@ -10,7 +10,6 @@ SOURCES = main.c \
 	path_already_given.c \
 	set_env.c \
 	pipex.c \
-	multi_pipex.c \
 	wait_all.c \
 	error.c
 
@@ -80,12 +79,12 @@ $(DIR_BONUS)%.o : $(SRC_BONUS)%.c | $(DIR_BONUS)
 	@$(CC) $(CFLAGS) $(INCLUDES_BONUS) -o $@ -c $<
 
 $(DIR) :
-	@echo "Start Compilation"
+	@echo "Start Compilation for $(NAME)"
 	@echo "Wait ..."
 	@mkdir -p objs_deps
 
 $(DIR_BONUS) :
-	@echo "Start Compilation"
+	@echo "Start Compilation for $(NAME_BONUS)"
 	@echo "Wait ..."
 	@mkdir -p objs_deps_bonus
 
