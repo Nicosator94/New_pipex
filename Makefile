@@ -11,6 +11,7 @@ SOURCES = main.c \
 	set_env.c \
 	pipex.c \
 	wait_all.c \
+	file_problem.c \
 	error.c
 
 HEADERS_BONUS = pipex_bonus.h
@@ -24,6 +25,7 @@ SOURCES_BONUS = main_bonus.c \
 	pipex_bonus.c \
 	multi_pipex_bonus.c \
 	wait_all_bonus.c \
+	file_problem_bonus.c \
 	error_bonus.c
 
 SRC = srcs/
