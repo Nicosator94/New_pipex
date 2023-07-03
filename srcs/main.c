@@ -6,11 +6,11 @@
 /*   By: niromano <niromano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 13:05:23 by niromano          #+#    #+#             */
-/*   Updated: 2023/06/30 11:10:55 by niromano         ###   ########.fr       */
+/*   Updated: 2023/07/03 12:05:08 by niromano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../includes/pipex.h"
 
 int	main(int argc, char *argv[], char **env)
 {

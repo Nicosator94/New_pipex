@@ -6,11 +6,11 @@
 /*   By: niromano <niromano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 11:22:02 by niromano          #+#    #+#             */
-/*   Updated: 2023/06/30 11:22:06 by niromano         ###   ########.fr       */
+/*   Updated: 2023/07/03 12:18:45 by niromano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../includes_bonus/pipex_bonus.h"
 
 char	*check_path(char **cmd, char **env, t_list *list)
 {

@@ -6,11 +6,11 @@
 /*   By: niromano <niromano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 14:11:35 by niromano          #+#    #+#             */
-/*   Updated: 2023/06/30 10:52:52 by niromano         ###   ########.fr       */
+/*   Updated: 2023/07/03 12:05:02 by niromano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../includes/pipex.h"
 
 void	env_null(t_list *list)
 {

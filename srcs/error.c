@@ -6,11 +6,11 @@
 /*   By: niromano <niromano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 07:46:34 by niromano          #+#    #+#             */
-/*   Updated: 2023/07/03 11:29:52 by niromano         ###   ########.fr       */
+/*   Updated: 2023/07/03 12:07:49 by niromano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../includes/pipex.h"
 
 void	free_mat(char **mat)
 {

@@ -6,11 +6,11 @@
 /*   By: niromano <niromano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 07:12:32 by niromano          #+#    #+#             */
-/*   Updated: 2023/06/30 08:02:16 by niromano         ###   ########.fr       */
+/*   Updated: 2023/07/03 12:05:14 by niromano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../includes/pipex.h"
 
 int	pipex_start(char **env, t_list *list, int fd)
 {

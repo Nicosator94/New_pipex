@@ -6,11 +6,11 @@
 /*   By: niromano <niromano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 09:49:53 by niromano          #+#    #+#             */
-/*   Updated: 2023/06/30 11:23:03 by niromano         ###   ########.fr       */
+/*   Updated: 2023/07/03 12:17:56 by niromano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../includes_bonus/pipex_bonus.h"
 
 int	len_without_cmd(char *cmd)
 {
