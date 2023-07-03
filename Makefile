@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -MMD -g3 -I.
 
-SRCS = main.c \
+SOURCES = main.c \
 	init_struct.c \
 	init_cmd.c \
 	check_path.c \
@@ -15,12 +15,12 @@ SRCS = main.c \
 SRC = srcs/
 DIR = objs_deps/
 
-OBJS = $(addprefix $(SRC), $(SRCS))
+SRCS = $(addprefix $(SRC), $(SOURCES))
 OBJS = $(addprefix $(DIR), $(OBJ))
 DEPS = $(addprefix $(DIR), $(DEP))
 
-OBJ = $(SRCS:.c=.o)
-DEP = $(SRCS:.c=.d)
+OBJ = $(SOURCES:.c=.o)
+DEP = $(SOURCES:.c=.d)
 
 SRCS_BNS = main_bonus.c \
 	init_struct_bonus.c \
