@@ -24,6 +24,7 @@ SOURCES_BONUS = main_bonus.c \
 	set_env_bonus.c \
 	pipex_bonus.c \
 	multi_pipex_bonus.c \
+	here_doc_bonus.c \
 	wait_all_bonus.c \
 	file_problem_bonus.c \
 	error_bonus.c
