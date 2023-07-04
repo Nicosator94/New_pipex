@@ -6,7 +6,7 @@
 /*   By: niromano <niromano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 09:49:53 by niromano          #+#    #+#             */
-/*   Updated: 2023/07/03 12:05:12 by niromano         ###   ########.fr       */
+/*   Updated: 2023/07/04 09:16:18 by niromano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,12 +78,5 @@ t_cmd	path_already_given(char *cmd, t_list *list)
 		free(cmd_init.path);
 		malloc_error(list);
 	}
-	if (access(cmd_init.path, F_OK | X_OK) == 0)
-		return (cmd_init);
-	free(cmd_init.path);
-	free_mat(cmd_init.cmd);
-	ft_putstr_fd("Command not found\n", 2);
-	ft_lstclear(&list);
-	exit(EXIT_FAILURE);
 	return (cmd_init);
 }
