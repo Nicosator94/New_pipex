@@ -6,15 +6,29 @@
 /*   By: niromano <niromano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 08:27:23 by niromano          #+#    #+#             */
-/*   Updated: 2023/07/04 09:29:17 by niromano         ###   ########.fr       */
+/*   Updated: 2023/07/04 11:22:21 by niromano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes_bonus/pipex_bonus.h"
 
-int	set_temp_here_doc(t_list *list, char *limiter)
+void	gnl_to_temp(int temp, char *limiter)
 {
 	char	*s;
+
+	limiter = ft_strjoin(limiter, "\n");
+	s = get_next_line(0, limiter);
+	while (ft_strncmp(s, limiter, ft_strlen(s)) != 0)
+	{
+		ft_putstr_fd(s, temp);
+		free(s);
+		s = get_next_line(0, limiter);
+	}
+	free(limiter);
+}
+
+int	set_temp_here_doc(t_list *list, char *limiter)
+{
 	pid_t	pid;
 	int		tube[2];
 
@@ -27,16 +41,8 @@ int	set_temp_here_doc(t_list *list, char *limiter)
 	if (pid == 0)
 	{
 		close(tube[0]);
-		limiter = ft_strjoin(limiter, "\n");
-		s = get_next_line(0, limiter);
-		while (ft_strncmp(s, limiter, ft_strlen(s)) != 0)
-		{
-			ft_putstr_fd(s, tube[1]);
-			free(s);
-			s = get_next_line(0, limiter); 
-		}
+		gnl_to_temp(tube[1], limiter);
 		close(tube[1]);
-		free(limiter);
 		ft_lstclear(&list);
 		exit(EXIT_SUCCESS);
 	}
@@ -49,6 +55,12 @@ void	here_doc(t_list *list, int argc, char *argv[], char **env)
 	int	outfile;
 	int	temp_tube;
 
+	if (argc < 6)
+	{
+		ft_putstr_fd("The number of arguments is under that 6\n", 2);
+		ft_lstclear(&list);
+		exit(EXIT_FAILURE);
+	}
 	temp_tube = set_temp_here_doc(list, argv[2]);
 	temp_tube = pipex_start(env, list, temp_tube);
 	temp_tube = multi_pipex(env, list, temp_tube);
