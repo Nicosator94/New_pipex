@@ -6,7 +6,7 @@
 /*   By: niromano <niromano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 10:14:50 by niromano          #+#    #+#             */
-/*   Updated: 2023/07/04 08:56:00 by niromano         ###   ########.fr       */
+/*   Updated: 2023/07/04 10:46:11 by niromano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ char	**set_env(char **env, t_list *list);
 t_cmd	set_cmd(char *cmd, char **env, t_list *list);
 t_cmd	path_already_given(char *cmd, t_list *list);
 t_list	*init_struct(int argc, char *argv[], int trigger);
+void	check_cmd(t_list *list, t_cmd cmd);
 
 int		without_infile(t_list *list, char *infile);
 void	without_outfile(char *outfile, int fd);

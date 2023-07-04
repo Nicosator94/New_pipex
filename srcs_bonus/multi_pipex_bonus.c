@@ -6,7 +6,7 @@
 /*   By: niromano <niromano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 08:05:03 by niromano          #+#    #+#             */
-/*   Updated: 2023/07/04 10:20:11 by niromano         ###   ########.fr       */
+/*   Updated: 2023/07/04 10:45:42 by niromano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	more_pipex(char **env, char *content, t_list *list, int fd)
 		dup2(tube[1], 1);
 		close(fd);
 		close(tube[1]);
+		check_cmd(list, cmd);
 		if (execve(cmd.path, cmd.cmd, NULL) == -1)
 			exec_error(cmd.cmd, cmd.path, list);
 	}

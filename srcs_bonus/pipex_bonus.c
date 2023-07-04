@@ -6,11 +6,21 @@
 /*   By: niromano <niromano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 07:12:32 by niromano          #+#    #+#             */
-/*   Updated: 2023/07/04 10:22:27 by niromano         ###   ########.fr       */
+/*   Updated: 2023/07/04 10:45:27 by niromano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes_bonus/pipex_bonus.h"
+
+void	check_cmd(t_list *list, t_cmd cmd)
+{
+	if (cmd.path == NULL || cmd.cmd == NULL)
+	{
+		ft_putstr_fd("Command not found\n", 2);
+		ft_lstclear(&list);
+		exit(EXIT_FAILURE);
+	}
+}
 
 int	pipex_start(char **env, t_list *list, int fd)
 {
@@ -31,6 +41,7 @@ int	pipex_start(char **env, t_list *list, int fd)
 		dup2(tube[1], 1);
 		close(fd);
 		close(tube[1]);
+		check_cmd(list, cmd);
 		if (execve(cmd.path, cmd.cmd, NULL) == -1)
 			exec_error(cmd.cmd, cmd.path, list);
 	}
@@ -58,6 +69,7 @@ void	pipex_end(char **env, t_list *list, int outfile, int fd)
 		dup2(outfile, 1);
 		close(fd);
 		close(outfile);
+		check_cmd(list, cmd);
 		if (execve(cmd.path, cmd.cmd, NULL) == -1)
 			exec_error(cmd.cmd, cmd.path, list);
 	}
