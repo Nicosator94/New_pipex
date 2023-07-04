@@ -6,7 +6,7 @@
 /*   By: niromano <niromano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 10:14:50 by niromano          #+#    #+#             */
-/*   Updated: 2023/07/04 01:06:52 by niromano         ###   ########.fr       */
+/*   Updated: 2023/07/04 07:46:46 by niromano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ t_list	*init_struct(int argc, char *argv[]);
 
 int		without_infile(t_list *list, char *infile);
 void	without_outfile(char *outfile, int fd);
+
+void	pipex(t_list *list, int argc, char *argv[], char **env);
 
 int		pipex_start(char **env, t_list *list, int fd);
 void	pipex_end(char **env, t_list *list, int outfile, int fd);

@@ -6,7 +6,7 @@
 /*   By: niromano <niromano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 13:05:23 by niromano          #+#    #+#             */
-/*   Updated: 2023/07/04 01:06:20 by niromano         ###   ########.fr       */
+/*   Updated: 2023/07/04 07:47:47 by niromano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 
 int	main(int argc, char *argv[], char **env)
 {
-	int		temp_tube;
-	int		infile;
-	int		outfile;
 	t_list	*list;
 
 	if (argc != 5)
@@ -25,16 +22,7 @@ int	main(int argc, char *argv[], char **env)
 		exit(EXIT_FAILURE);
 	}
 	list = init_struct(argc, argv);
-	infile = open(argv[1], O_RDONLY);
-	if (infile != -1)
-		temp_tube = pipex_start(env, list, infile);
-	else
-		temp_tube = without_infile(list, argv[1]);
-	outfile = open(argv[argc - 1], O_WRONLY | O_TRUNC | O_CREAT, 0644);
-	if (outfile != -1)
-		pipex_end(env, list, outfile, temp_tube);
-	else
-		without_outfile(argv[argc - 1], temp_tube);
+	pipex(list, argc, argv, env);
 	wait_all(list);
 	ft_lstclear(&list);
 	return (0);

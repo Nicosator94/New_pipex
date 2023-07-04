@@ -6,13 +6,13 @@
 /*   By: niromano <niromano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 08:05:03 by niromano          #+#    #+#             */
-/*   Updated: 2023/07/03 14:07:52 by niromano         ###   ########.fr       */
+/*   Updated: 2023/07/04 07:51:09 by niromano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes_bonus/pipex_bonus.h"
 
-int	pipex(char **env, char *content, t_list *list, int fd)
+int	more_pipex(char **env, char *content, t_list *list, int fd)
 {
 	pid_t	pid;
 	t_cmd	cmd;
@@ -46,7 +46,7 @@ int	multi_pipex(char **env, t_list *list, int fd)
 	temp = list->next;
 	while (temp->next != NULL)
 	{
-		fd = pipex(env, temp->content, list, fd);
+		fd = more_pipex(env, temp->content, list, fd);
 		temp = temp->next;
 	}
 	return (fd);
