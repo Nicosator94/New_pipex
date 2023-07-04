@@ -6,7 +6,7 @@
 /*   By: niromano <niromano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 08:27:23 by niromano          #+#    #+#             */
-/*   Updated: 2023/07/04 09:19:46 by niromano         ###   ########.fr       */
+/*   Updated: 2023/07/04 09:29:17 by niromano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	here_doc(t_list *list, int argc, char *argv[], char **env)
 	temp_tube = set_temp_here_doc(list, argv[2]);
 	temp_tube = pipex_start(env, list, temp_tube);
 	temp_tube = multi_pipex(env, list, temp_tube);
-	outfile = open(argv[argc - 1], O_WRONLY | O_TRUNC | O_CREAT, 0644);
+	outfile = open(argv[argc - 1], O_WRONLY | O_APPEND | O_CREAT, 0644);
 	if (outfile != -1)
 		pipex_end(env, list, outfile, temp_tube);
 	else
