@@ -6,7 +6,7 @@
 /*   By: niromano <niromano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 14:11:35 by niromano          #+#    #+#             */
-/*   Updated: 2023/07/03 12:17:47 by niromano         ###   ########.fr       */
+/*   Updated: 2023/07/04 09:53:27 by niromano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,22 @@ void	env_null(t_list *list)
 	ft_putstr_fd("Command not found\n", 2);
 	ft_lstclear(&list);
 	exit(EXIT_FAILURE);
+}
+
+int	verify_env(char **env)
+{
+	int	trigger;
+	int	i;
+
+	i = 0;
+	trigger = -1;
+	while (env[i] != NULL)
+	{
+		if (ft_strncmp(env[i], "PATH=", 5) == 0)
+			trigger = 0;
+		i ++;
+	}
+	return (trigger);
 }
 
 t_cmd	set_cmd(char *cmd, char **env, t_list *list)
@@ -31,7 +47,7 @@ t_cmd	set_cmd(char *cmd, char **env, t_list *list)
 	}
 	if (cmd[0] == '/' || cmd[0] == '.')
 		return (path_already_given(cmd, list));
-	if (env[0] == NULL)
+	if (verify_env(env) == -1)
 		env_null(list);
 	cmd_init.cmd = ft_split(cmd, ' ');
 	if (cmd_init.cmd == NULL)
