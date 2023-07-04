@@ -6,7 +6,7 @@
 /*   By: niromano <niromano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 08:27:23 by niromano          #+#    #+#             */
-/*   Updated: 2023/07/04 09:02:37 by niromano         ###   ########.fr       */
+/*   Updated: 2023/07/04 09:19:46 by niromano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	set_temp_here_doc(t_list *list, char *limiter)
 			free(s);
 			s = get_next_line(0, limiter); 
 		}
+		close(tube[1]);
 		free(limiter);
 		ft_lstclear(&list);
 		exit(EXIT_SUCCESS);

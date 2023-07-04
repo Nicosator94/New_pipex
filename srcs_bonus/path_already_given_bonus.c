@@ -6,7 +6,7 @@
 /*   By: niromano <niromano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 09:49:53 by niromano          #+#    #+#             */
-/*   Updated: 2023/07/04 09:16:35 by niromano         ###   ########.fr       */
+/*   Updated: 2023/07/04 09:25:39 by niromano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,29 +42,11 @@ char	**search_cmd(char *cmd)
 	return (mat_cmd);
 }
 
-void	check_slash(char *cmd, t_list *list)
-{
-	int	i;
-
-	i = 0;
-	while (cmd[i] != '\0')
-	{
-		if (cmd[i] != '/' && cmd[i] != '.')
-			return ;
-		i ++;
-	}
-	ft_putstr_fd("Command not found\n", 2);
-	ft_lstclear(&list);
-	exit(EXIT_FAILURE);
-	return ;
-}
-
 t_cmd	path_already_given(char *cmd, t_list *list)
 {
 	t_cmd	cmd_init;
 	char	**temp;
 
-	check_slash(cmd, list);
 	temp = ft_split(cmd, ' ');
 	if (temp == NULL)
 		malloc_error(list);
