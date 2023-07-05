@@ -6,7 +6,7 @@
 /*   By: niromano <niromano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 09:49:53 by niromano          #+#    #+#             */
-/*   Updated: 2023/07/04 10:08:47 by niromano         ###   ########.fr       */
+/*   Updated: 2023/07/05 09:11:27 by niromano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,28 @@ char	**search_cmd(char *cmd)
 	return (mat_cmd);
 }
 
+int	check_point(char *cmd)
+{
+	if (ft_strlen(cmd) == 1)
+	{
+		if (cmd[0] == '.')
+			return (1);
+	}
+	if (ft_strlen(cmd) > 1)
+	{
+		if (cmd[0] == '.' && cmd[1] != '/')
+			return (1);
+	}
+	return (0);
+}
+
 t_cmd	path_already_given(char *cmd, t_list *list)
 {
 	t_cmd	cmd_init;
 	char	**temp;
 
+	if (check_point(cmd) == 1)
+		return (not_found(cmd_init));
 	temp = ft_split(cmd, ' ');
 	if (temp == NULL)
 		malloc_error(list);

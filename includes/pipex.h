@@ -6,7 +6,7 @@
 /*   By: niromano <niromano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 10:14:50 by niromano          #+#    #+#             */
-/*   Updated: 2023/07/04 07:55:24 by niromano         ###   ########.fr       */
+/*   Updated: 2023/07/05 09:04:30 by niromano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	wait_all(t_list *list);
 
 // Check_error
 
+t_cmd	not_found(t_cmd cmd);
 void	free_mat(char **mat);
 void	malloc_error(t_list *list);
 void	system_error(t_list *list);
